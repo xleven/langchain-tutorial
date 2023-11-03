@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "langservehub-template"
+name = "langchain-tutorial"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "Practical guides of LangChain"
+authors = ["xleven <xleven@outlook.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 sse-starlette = "^1.6.5"
 tomli-w = "^1.0.0"
 uvicorn = "^0.23.2"

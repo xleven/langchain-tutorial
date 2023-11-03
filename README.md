@@ -1,49 +1,35 @@
-# langchain-tutorial
+# LangChain Tutorial
 
-## Installation
+Practical guides of [LangChain](https://github.com/langchain-ai/langchain).
 
-Install the LangChain CLI if you haven't yet
+## Chapters
+
+- [x] [T00: LLM](./packages/t00-llm/README.md)
+- [ ] T01: Prompt
+- [ ] T02: Memory
+- [ ] ...
+
+
+
+## Run Locally
 
 ```bash
+git clone https://github.com/xleven/langchain-tutorial.git
+
+cd langchain-tutorial
+python3 -m venv .venv && source .venv/bin/activate
 pip install -U "langchain-cli[serve]"
-```
+for dir in packages/t*; do pip install -e "$dir"; done
 
-## Adding packages
+# set OpenAI API key
+export OPENAI_API_KEY=<your-api-key>
 
-```bash
-# adding packages from 
-# https://github.com/langchain-ai/langchain/tree/master/templates
-langchain app add $PROJECT_NAME
-
-# adding custom GitHub repo packages
-langchain app add --repo $OWNER/$REPO
-# or with whole git string (supports other git providers):
-# langchain app add git+https://github.com/hwchase17/chain-of-verification
-
-# with a custom api mount point (defaults to `/{package_name}`)
-langchain app add $PROJECT_NAME --api_path=/my/custom/path/rag
-```
-
-Note: you remove packages by their api path
-
-```bash
-langchain app remove my/custom/path/rag
-```
-
-## Setup LangSmith (Optional)
-LangSmith will help us trace, monitor and debug LangChain applications. 
-LangSmith is currently in private beta, you can sign up [here](https://smith.langchain.com/). 
-If you don't have access, you can skip this section
-
-
-```shell
-export LANGCHAIN_TRACING_V2=true
-export LANGCHAIN_API_KEY=<your-api-key>
-export LANGCHAIN_PROJECT=<your-project>  # if not specified, defaults to "default"
-```
-
-## Launch LangServe
-
-```bash
+# serve all chapters
 langchain serve
+
+# or serve specific chapter
+cd packages/t00-llm && langchain serve
 ```
+
+Now go to [http://localhost:8000/docs](http://localhost:8000/docs) or [http://localhost:8000/redoc](http://localhost:8000/redoc) to see all the available API. Those ended with `playground` can be used to play with the API.
+
